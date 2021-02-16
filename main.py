@@ -1,3 +1,5 @@
+#!/usr/bin/python3
+
 import pyautogui
 import os
 import time
@@ -24,9 +26,7 @@ class Spamer:
 
     def spammer(self, spam_script):
         time.sleep(self.sleep_time)
-        print('yes func')
         for word in spam_script:
-            print('yes loop')
             pyautogui.typewrite(word)
             pyautogui.press('enter')
 
@@ -58,5 +58,13 @@ if s.status:
         # start spaming
         with open('script.txt', 'r') as spam_script:
             s.spammer(spam_script)
-        
+            
+elif s.status == False:
+    s.sleep_time = int(input('set sleep timer(sec): '))
+    s.spam_count = int(input('set the spam count: '))
+    s.spam_content = input('set your spam content: ')
 
+    with open('script.txt', 'a') as spam_source:
+        s.create_script(s.spam_count, s.spam_content, spam_source)
+    with open('script.txt', 'r') as spam_script:
+        s.spammer(spam_script)
