@@ -1,1 +1,5 @@
-venv
+# virtualenv files
+venv/
+
+# other stuff 
+script.txt
